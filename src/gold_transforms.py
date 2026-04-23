@@ -301,3 +301,18 @@ def run_gold_pipeline(engine):
     upsert_gold_padrao_climatico(engine)
     upsert_gold_sensacao_termica(engine)
     logging.info("=== PIPELINE GOLD CONCLUÍDO ===\n")
+    
+def run_gold_hourly(engine):
+    logging.info("\n=== INICIANDO PIPELINE GOLD HORÁRIO ===")
+    create_gold_tables(engine)
+    append_gold_pressao_tendencia(engine)
+    upsert_gold_padrao_climatico(engine)
+    logging.info("=== PIPELINE GOLD HORÁRIO CONCLUÍDO ===\n")
+
+def run_gold_daily(engine):
+    logging.info("\n=== INICIANDO PIPELINE GOLD DIÁRIO ===")
+    create_gold_tables(engine)
+    upsert_gold_temperatura_diaria(engine)
+    upsert_gold_amplitude_termica(engine)
+    upsert_gold_sensacao_termica(engine)
+    logging.info("=== PIPELINE GOLD DIÁRIO CONCLUÍDO ===\n")
