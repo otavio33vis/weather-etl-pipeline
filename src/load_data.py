@@ -53,6 +53,8 @@ def create_table_if_not_exists(engine):
                 status_descricao  VARCHAR,
                 nascer_sol        TIMESTAMPTZ,
                 por_sol           TIMESTAMPTZ,
+                chuva_1h          FLOAT,
+                neve_1h           FLOAT,
                 sys_type          INTEGER,
                 sys_id            INTEGER,
                 pais              VARCHAR,

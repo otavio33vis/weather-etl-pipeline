@@ -34,6 +34,8 @@ columns_names_to_rename = {
         "sys.country":    "pais",
         "sys.sunrise":    "nascer_sol",
         "sys.sunset":     "por_sol",
+        "rain.1h":        "chuva_1h",
+        "snow.1h":        "neve_1h",
         # weather_id, weather_main, weather_description 
     }
 columns_to_normalize_datetime = ['coletado_em', 'nascer_sol', 'por_sol']
@@ -110,6 +112,11 @@ def enrich_columns(df: pd.DataFrame) -> pd.DataFrame:
     ).astype(str))
 
     logging.info("✓ Colunas enriquecidas")
+    
+    # ajuste insercao colunas chuva e neve
+    for col in ['chuva_1h', 'neve_1h']:
+        if col not in df.columns:
+            df[col] = None
     return df
 
 def data_transformations():
